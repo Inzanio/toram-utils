@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(
     layout="wide",
     page_title="toram_utils",
-    #page_icon="./static/img/logoCSP_smaller.png",
+    page_icon="🌟",
        
 )
 

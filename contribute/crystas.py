@@ -9,7 +9,7 @@ col_name , col_target = st.columns(2)
 
 name = col_name.text_input("Crysta Name")
 target = col_target.selectbox("Crystas For",XTALL_TARGET)
-stat_container = st.container(border=True)
+
 col_stat , col_value , col_condition = st.columns(3)
 statLabel = col_stat.selectbox("Stat Name", STATS_ARMOR)
 statValue = col_value.number_input("Stat Value",value=0)
@@ -18,12 +18,13 @@ condition = col_condition.selectbox("Condition",STAT_CONDITIONS, index=0 ,help="
 
 # st.write("we printed the stat --1--",st.session_state.currentCrystaStat)
 # print("we printed the stat --1--",st.session_state.currentCrystaStat)
-if st.button("Add Stat") :
+coladd,colsave,colvoid = st.columns([1,1,6])
+if coladd.button("Add Stat") :
     if (statValue != 0):
         if (condition == None):
             st.session_state.currentCrystaStat[statLabel] = statValue
-            st.write("Added non conditionnal stat")
-            print("Added non conditionnal stat")
+            #st.write("Added non conditionnal stat")
+            #print("Added non conditionnal stat")
         else :
             index = next((i for i, cond in enumerate(st.session_state.currentCrystaConditionnalStat) if condition in cond), None)
             if index is not None:
@@ -36,11 +37,11 @@ if st.button("Add Stat") :
                 })
     else :
         st.warning("Sorry we won't add a stat with 0 as value")
-
+stat_container = st.container(border=True)
 print_stat(stats=st.session_state.currentCrystaStat, conditionnal_stats=st.session_state.currentCrystaConditionnalStat, container=stat_container)
 # st.write("we printed the stat --2--",st.session_state.currentCrystaStat)
 # print("we printed the stat --2--",st.session_state.currentCrystaStat)
-if st.button("Save",type="primary"):
+if colsave.button("Save",type="primary"):
     if(st.session_state.currentCrystaStat == {}):
         st.warning("Bro add at least one stat !")
     

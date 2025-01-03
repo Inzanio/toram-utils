@@ -3,8 +3,9 @@ from toram_utils.equipment import FOOD_BUFF_STAT
 from helpers.session import persist_session_data
 persist_session_data()
 
-st.title("🍽️ Looking for a food buff ? 😋")
-
+col1,col2 = st.columns([7,4],vertical_alignment="top")
+col1.title("🍽️ Looking for a food buff ? 😋")
+col2.image("./img/toram-utils.png",width=150)
 food_stat = st.selectbox("📝Select the food buff the food buff you need", options=FOOD_BUFF_STAT)
 #st.session_state.food_buffs[0].stat_names
 food_buffs = [ fb for fb in  st.session_state.food_buffs if (food_stat in fb.stat_names and fb.levels[fb.stat_names.index(food_stat)] is not None )]

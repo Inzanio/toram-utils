@@ -3,7 +3,7 @@ import streamlit as st
 st.set_page_config(
     layout="wide",
     page_title="toram_utils",
-    page_icon="🌟",
+    page_icon="./img/toram-utils.png",
        
 )
 
@@ -39,6 +39,7 @@ addFood_buff =st.Page("contribute/food_buff.py", title="Add Food Buff", icon="�
 #magic = st.Page("contribute/magic.py", title="Current Session Data", icon="✨")
 food_buff_finder = st.Page("tools/food_buff_finder.py",title="Find Food Buff", icon="🥗",default=True)
 
+st.logo("./img/logo.png",size="large")
 pages = {
     
     "Simulator":[build,inventory],

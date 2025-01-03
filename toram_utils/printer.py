@@ -94,7 +94,7 @@ def print_regisltet(reg : Registlet , showLevel = False ):
         return f"{reg.name} lvl {reg.level}"
     return f"{reg.name}  --  Max Level : {reg.maxlevel}"
 
-from toram_utils.skills import Skill
+from toram_utils.skills.skills import Skill
 def print_skill(skill : Skill):
     return f"{skill.name} Lvl {skill.level}"
 

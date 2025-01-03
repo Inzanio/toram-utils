@@ -1,58 +1,22 @@
 
-
-from toram_utils.equipment import EquipmentType
-from math import floor
+from .skills import SkillTypes , Skill
 from toram_utils.stat_calculations import Build
-class SkillTypes :
-	ACTIVE = "Active"
-	PASSIVE = "Passive"
-	ATTACKING = "Attacking"
+from math import floor
+from toram_utils.equipment import EquipmentType
 
+# ADD all blade skills
+# Done
+# - passive : Sword mastery,quick slash, sword techniques, 
+# - buff : war cry, berzerk , gladiate
+# - active : astute, buster blade, aura blade
+# 
+# TODO : 
+# - buff : rampage
+# - active : Meteor Breaker, Lunar Slash, Shut out
+# - active : spiral air, sonic blade, sword tempest, tiger slash
 
-class Skill : 
-	def __init__(self, name : str, type : list, level:int, build : Build ):
-		self.name = name
-		self.type = type
-		self.level = level
-		self.mp_cost = 0
-		self.build_meet_weapon_condition= True
-		
-		self.ailment = None
-		#self.effects = effects
-		self.build = build
-		self.hasSpecialEffect = False
-		self.description = ""
-		self.passive_description = ""
-		self.active_description = ""
-		self.dps_description = ""
-		self.active = False
-  
-		self.hasSpecialAttribute = False
-		
-		
-	@property
-	def dps_stats(self):
-		return {}
-	@property
-	def passive_stats(self):
-		return {}
-	@property
-	def active_stats(self):
-		return {}
-	
-	@property
-	def constant(self):
-		return 0
-	@property
-	def multi(self):
-		return 0
-	
-	@property
-	def damage(self):
-		return None
 
 # ---------------------------------- BLADE SKILLS ---------------------------------#
-
 class BladeSkill:
 	tree = "Blade Skills"
 	def __init__(self):
@@ -274,11 +238,30 @@ class AuraBlade(Skill,BladeSkill):
 	@property
 	def multi(self):
 		return 5 + self.level
-#DPS_SKILL_BLADE_SKILLS = [Astute]
+
+class MeteorBreaker(Skill,BladeSkill):
+	name = "Meteor Breaker"
+	type = [SkillTypes.ATTACKING]
+	
+	def __init__(self, level, build : Build):
+		super().__init__(self.name,self.type, level, build)
+		self.build_meet_weapon_condition = self.build.main_weapon and self.build.main_weapon.type in ["OHS","THS"]
+    
+	@property
+	def constant(self):
+		return 400+20*self.level
+	@property
+	def multi(self):
+		multi = 0.75 * self.level
+		if self.build.main_weapon : 
+			if self.build.main_weapon.type == EquipmentType.OHS :
+				multi+=  self.build.baseDEX/200
+				auraBlade = next((skill for skill in self.build.passive_skills if skill.name == AuraBlade.name), None)
+				if (auraBlade):
+					multi += (0.2 * auraBlade.level) + self.build.baseDEX/200
+			elif self.build.main_weapon.type == EquipmentType.THS :
+				multi+=  self.build.baseSTR/200 
+		return multi
 
 BLADE_SKILLS = [SwordMastery,QuickSlash,SwordTechniques,WarCry,Berserk,Gladiate,Astute,BusterBlade,AuraBlade] #+ DPS_SKILL_BLADE_SKILLS      
-
-
-# --------------------------------- SHOTS SKILLS -----------------------------------#
-SKILLS = BLADE_SKILLS
 

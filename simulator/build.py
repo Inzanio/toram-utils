@@ -355,5 +355,3 @@ with resume_tab :
             col_dte1.metric("DTE Dark", show_percent(build.totalDTE_Dark))
             col_dte2.metric("DTE Light", show_percent(build.totalDTE_Light))
         
-        
-        

@@ -43,17 +43,17 @@ def load_food_buffs():
     for doc in docs:
         st.session_state.food_buffs.append(FoodBuff.from_dict(doc))
         
-def update_food_buff():
-    docs = get_all_data(food_buff_db)
-    for doc in docs:
+# def update_food_buff():
+#     docs = get_all_data(food_buff_db)
+#     for doc in docs:
         
-        fb = FoodBuff.from_dict(doc)
-        print(f"{fb.code} - {fb.stat_names} ")
-        for i, stat_name in enumerate(fb.stat_names) :
-            if (stat_name):
-                if ("stronger against" in stat_name):
-                    fb.stat_names[i] = stat_name.replace("stronger against", "Damage To")
-                    print(f"we replace {fb.code} - {fb.stat_names} ")
-    doc_ref = db.collection(food_buff_db).document(fb.code)
-    doc_ref.update(fb.to_dict())
-    print("task ended successfully")
+#         fb = FoodBuff.from_dict(doc)
+#         print(f"{fb.code} - {fb.stat_names} ")
+#         for i, stat_name in enumerate(fb.stat_names) :
+#             if (stat_name):
+#                 if ("stronger against" in stat_name):
+#                     fb.stat_names[i] = stat_name.replace("stronger against", "Damage To")
+#                     print(f"we replace {fb.code} - {fb.stat_names} ")
+#     doc_ref = db.collection(food_buff_db).document(fb.code)
+#     doc_ref.update(fb.to_dict())
+#     print("task ended successfully")

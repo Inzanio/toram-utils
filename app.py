@@ -11,14 +11,14 @@ st.set_page_config(
 from helpers.session import persist_session_data,load_crytas
 from toram_utils.consommables import load_consommables
 from toram_utils.regislet import load_registlets
-from toram_utils.food_buff import load_food_buffs, update_food_buff
+from toram_utils.food_buff import load_food_buffs
 persist_session_data()
 
 load_registlets()
 load_crytas()
 load_consommables()
 load_food_buffs()
-update_food_buff()
+
 
 
 build = st.Page("simulator/build.py",title="Build", icon="⚒️")

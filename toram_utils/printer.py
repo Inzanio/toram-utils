@@ -60,7 +60,7 @@ def format_stat(stat, value):
     
     if stat.startswith("%"):
         stat_name = stat[1:]
-        stat_name = stat_name.replace("stronger against", "Damage To")
+        #stat_name = stat_name.replace("stronger against", "Damage To")
         return f"+{value}% {stat_name}"
     if stat.endswith("%"):
         stat_name = stat[:-1]

@@ -85,3 +85,6 @@ def add_crysta(crysta : Crysta):
     doc_ref.set(crysta.to_dict())
     get_all_data.clear(crystas_db)
     load_crytas()
+
+
+    

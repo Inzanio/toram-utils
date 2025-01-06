@@ -18,7 +18,7 @@ if (len(food_buffs)>0):
             
             c = st.container(border=True)
             c.write(f"🏡 {food_buff.owner_name if food_buff.owner_name != '' else 'an OP player'} ⚡Level {food_buff.levels[food_buff.stat_names.index(food_stat)]}")
-            c.code(food_buff.code)
+            c.code(food_buff.code,language=None)
 else:
     st.write(f"💔 Sad, no land's code for :blue[{food_stat}] has been registered yet 😭") 
     st.write(f"If you know some please register 🥺")

@@ -35,12 +35,12 @@ STATS = [
     # --------------- Elements -------------------#
     "Fire Element","Water Element","Wind Element","Earth Element",
     "Light Element","Dark Element",
-    "% stronger against Fire","% stronger against Water","% stronger against Wind","% stronger against Earth",
-    "% stronger against Light","% stronger against Dark",
+    "% Damage To Fire","% Damage To Water","% Damage To Wind","% Damage To Earth",
+    "% Damage To Light","% Damage To Dark",
     "Fire Resistance %","Water Resistance %","Wind Resistance %","Earth Resistance %",
     "Light Resistance %","Dark Resistance %",
     
-    "% stronger against Neutral","Neutral Resistance %","Neutral Element",
+    "% Damage To Neutral","Neutral Resistance %","Neutral Element",
     
     # --------------- Reduce DMG -------------------#v
     "Reduce Dmg (Player Epicenter) %","Reduce Dmg (Foe Epicenter) %","Reduce Dmg (Floor) %",
@@ -54,8 +54,8 @@ AWAKEN_ELEMENT = ["Fire Element","Water Element","Wind Element","Earth Element",
     "Light Element","Dark Element"]
 STATS_ARMOR = [stat for stat in STATS if stat not in AWAKEN_ELEMENT]
 
-FOOD_BUFF_STAT = ["MaxHP","MaxMP","Critical Rate","Attack MP Recovery","STR","INT","VIT","AGI","DEX","ATK","MATK","Weapon ATK","Physical Resistance %","Magic Resistance %","% stronger against Fire","% stronger against Water","% stronger against Wind","% stronger against Earth",
-    "% stronger against Light","% stronger against Dark","% stronger against Neutral","EXP Gain %","Drop Rate %","Fire Resistance %","Water Resistance %","Wind Resistance %","Earth Resistance %",
+FOOD_BUFF_STAT = ["MaxHP","MaxMP","Critical Rate","Attack MP Recovery","STR","INT","VIT","AGI","DEX","ATK","MATK","Weapon ATK","Physical Resistance %","Magic Resistance %","% Damage To Fire","% Damage To Water","% Damage To Wind","% Damage To Earth",
+    "% Damage To Light","% Damage To Dark","% Damage To Neutral","EXP Gain %","Drop Rate %","Fire Resistance %","Water Resistance %","Wind Resistance %","Earth Resistance %",
     "Light Resistance %","Dark Resistance %","Neutral Resistance %","Physical Barrier","Magic Barrier","Fractional Barrier %","Aggro %","Aggro -%","Accuracy","Dodge"]
 
 

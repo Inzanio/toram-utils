@@ -55,6 +55,8 @@ def init():
         st.session_state.selected_dps_skills = []
     if "food_buffs" not in st.session_state :
         st.session_state.food_buffs = []  
+    if "special_items_prices" not in st.session_state :
+        st.session_state.special_items_prices = {}  
     
     st.session_state.currentEquipmentStat = {}
     st.session_state.currentEquipmentConditonnalStat = []

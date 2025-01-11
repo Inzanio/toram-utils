@@ -54,6 +54,6 @@ def load_food_buffs():
 #                 if ("stronger against" in stat_name):
 #                     fb.stat_names[i] = stat_name.replace("stronger against", "Damage To")
 #                     print(f"we replace {fb.code} - {fb.stat_names} ")
-#     doc_ref = db.collection(food_buff_db).document(fb.code)
-#     doc_ref.update(fb.to_dict())
+#         doc_ref = db.collection(food_buff_db).document(fb.code)
+#         doc_ref.update(fb.to_dict())
 #     print("task ended successfully")

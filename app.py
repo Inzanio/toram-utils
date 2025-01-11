@@ -12,13 +12,14 @@ from helpers.session import persist_session_data,load_crytas
 from toram_utils.consommables import load_consommables
 from toram_utils.regislet import load_registlets
 from toram_utils.food_buff import load_food_buffs
+from toram_utils.prices_list import load_special_items_prices
 persist_session_data()
 
 load_registlets()
 load_crytas()
 load_consommables()
 load_food_buffs()
-
+load_special_items_prices()
 
 
 build = st.Page("simulator/build.py",title="Build", icon="⚒️")
@@ -31,14 +32,16 @@ addCrysta = st.Page("contribute/crystas.py", title="Add Crysta", icon="💎")
 addConso = st.Page("contribute/consommables.py", title="Add Consommable", icon="🧪")
 addFood_buff =st.Page("contribute/food_buff.py", title="Add Food Buff", icon="🥗")
 
-food_buff_finder = st.Page("tools/food_buff_finder.py",title="Find Food Buff", icon="🥗",default=True)
+addItem_price = st.Page("contribute/add_item_price.py", title="Add Special Item Price", icon="🌟")
 
+food_buff_finder = st.Page("tools/food_buff_finder.py",title="Find Food Buff", icon="🥗",default=True)
+items_prices = st.Page("tools/special_items_prices.py",title="Find Special Items Prices", icon="🌟")
 st.logo("./img/logo.png",size="large")
 pages = {
     
-    "Simulator":[build,inventory],
-    "Tools" : [food_buff_finder,hit,weapon],
-    "Contribute": [addCrysta, addConso, addFood_buff]
+    #"Simulator":[build,inventory],
+    "Tools" : [food_buff_finder,items_prices],
+    "Contribute": [addFood_buff,addItem_price]
 }
 # setting up app navigation
 app = st.navigation(pages)

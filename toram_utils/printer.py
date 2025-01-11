@@ -131,6 +131,8 @@ def print_dps_skill(skill : Skill,container=st):
         container.write(f"multi : {skill.multi}")
     else :
         container.write("You cannot use this skill with the current equipment")
+        
+
 #if ( print_void and stats =={}):
         # if (hasSpecialEffect):
         #     container.write(description)

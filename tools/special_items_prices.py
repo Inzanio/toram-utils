@@ -1,6 +1,7 @@
 import streamlit as st
 from toram_utils.prices_list import SPECIALS_ITEMS,format_price
 from helpers.session import persist_session_data
+import datetime
 persist_session_data()
 
 col1,col2 = st.columns([8,4],vertical_alignment="top")
@@ -12,15 +13,16 @@ item = st.session_state.special_items_prices.get(item_name)
 
 if (item) :
 # Trouver le prix le plus courant
-    current_price = min(item.prices.values(), key=lambda x: float(x))
+    date = max(item.prices.keys(), key=lambda x: datetime.datetime.strptime(x, "%d/%m/%Y"))
 
+    current_price = item.prices[date]
     # Calculer 10% du prix le plus courant
     pourcentage = 0.1
     delta = float(current_price) * pourcentage
 
     # Calculer l'intervalle
     intervalle_inf = int(current_price) - int(delta)
-    intervalle_sup = int(current_price)
+    intervalle_sup = int(current_price) + int( float(current_price) * 0.025 )
 
  
     st.write(f"👉You may have it beetween 💵:green[{format_price(intervalle_inf)}S] and :blue[{format_price(intervalle_sup)}S]💸")

@@ -112,6 +112,18 @@ EQUIPMENT_TYPE = ["Weapon"] + ARMOR_TYPE
 XTALL_TARGET = ["All"] + EQUIPMENT_TYPE
 
 
+WEAPON_BASE_RANGE = {
+    "OHS": 2,
+    "THS":3,
+    "KTN":2,
+    "HLB":4,
+    "STF": 2,
+    "MD":6,
+    "KNK":1,
+    "BW":10,
+    "BWG":8
+}
+
 # weapon = {
 #     "name":"9th anniv sword",
 #     "WATK": 550,
@@ -207,13 +219,14 @@ class Crysta :
         )
 
 class Weapon(EquipmentBase) :
-    def __init__(self,type = "OHS", baseWATK = 550, WATK = 550, stats = {}, refine=15, stability=80,name="",slots =[], conditionnal_stats = []):
+    def __init__(self,type = "OHS", baseWATK = 550, WATK = 550, stats = {}, refine=15, stability=80,name="",slots =[], conditionnal_stats = [], max_range = None):
         super().__init__(stats=stats,refine=refine,name=name,slots = slots,conditionnal_stats = conditionnal_stats)
         self.baseWATK = baseWATK
         self.WATK = WATK
         self.type = type
         self.stability = stability
         self.awakenElement = None
+        self.max_range = max_range if max_range else WEAPON_BASE_RANGE[self.type]
         self.set_element()
     
     def set_element(self):
@@ -394,6 +407,14 @@ class Ring(ArmorLike):
 class Target :
     def __init__(self):
         self.element = None
+        self.DEF = 0
+        self.MDEF = 0
+        self.dodge = 0
+        self.critical_resist = 0
+        self.physical_resistance = 0
+        self.magic_resistance = 0
+        self.level = 1
+        self.name = "Raffy"
 
 class Monster(Target):
     def __init__(self):

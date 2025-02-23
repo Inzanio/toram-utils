@@ -3,6 +3,10 @@ from toram_utils import Crysta
 from helpers.firestore import get_all_data,db
 
 def init():
+    
+    if "ontest" not in st.session_state :
+        st.session_state.ontest = False
+    
     if "playerLevel" not in st.session_state :
         st.session_state.playerLevel = 290
     if "currentCrystaStat" not in st.session_state :
@@ -60,6 +64,8 @@ def init():
     
     st.session_state.currentEquipmentStat = {}
     st.session_state.currentEquipmentConditonnalStat = []
+    if "ontest" not in st.session_state :
+        st.session_state.ontest = False
 def persist_session_data():
     init()
     for key in st.session_state:

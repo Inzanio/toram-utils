@@ -16,6 +16,7 @@ class Skill :
 		self.build_meet_weapon_condition= True
 		self.tree_level = 1
 		self.ailment = None
+		self.max_range = None
 		#self.effects = effects
 		self.build = build
 		self.hasSpecialEffect = False

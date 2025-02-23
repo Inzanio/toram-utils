@@ -139,6 +139,7 @@ class Astute(Skill,BladeSkill):
 		super().__init__(self.name,self.type, level, build)
 		self.build_meet_weapon_condition = self.build.main_weapon and self.build.main_weapon.type in ["OHS","THS"]
 		self.mp_cost = 100
+		self.max_range = self.build.main_weapon.max_range
 	@property
 	def active_stats(self):
 		if (self.build_meet_weapon_condition):
@@ -168,6 +169,7 @@ class BusterBlade(Skill,BladeSkill):
 	def __init__(self, level, build : Build):
 		super().__init__(self.name,self.type, level, build)
 		self.build_meet_weapon_condition = self.build.main_weapon and self.build.main_weapon.type in ["OHS","THS"]
+		self.max_range = 7
 	@property
 	def active_stats(self):
 		stats = {
@@ -246,7 +248,7 @@ class MeteorBreaker(Skill,BladeSkill):
 	def __init__(self, level, build : Build):
 		super().__init__(self.name,self.type, level, build)
 		self.build_meet_weapon_condition = self.build.main_weapon and self.build.main_weapon.type in ["OHS","THS"]
-    
+		self.max_range = self.build.main_weapon.max_range
 	@property
 	def constant(self):
 		return 400+20*self.level

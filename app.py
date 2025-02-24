@@ -22,7 +22,7 @@ load_food_buffs()
 load_special_items_prices()
 
 
-st.session_state.ontest = st.radio("On Test",[False,True], horizontal=True)
+#st.session_state.ontest = st.radio("On Test",[False,True], horizontal=True)
 
 build = st.Page("simulator/build.py",title="Build", icon="⚒️")
 inventory = st.Page("simulator/inventory.py", title="Inventory",icon="🎒")

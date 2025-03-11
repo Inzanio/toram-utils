@@ -95,4 +95,5 @@ def add_crysta(crysta : Crysta):
     load_crytas()
 
 
-    
+def under_developement(): 
+    st.write("⚠️:red[UNDER DEVELOPMENT]⚠️")

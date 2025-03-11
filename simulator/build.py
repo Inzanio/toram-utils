@@ -1,12 +1,13 @@
 import streamlit as st
-from helpers.session import persist_session_data
+from helpers.session import persist_session_data, under_developement
 from toram_utils import FOOD_BUFF_STAT,Ring,BodyArmor,Weapon,Additionnal,SubWeapon
 from toram_utils.printer import print_body_armor, print_ring, print_additionnal, print_weapon,print_subweapon,show_percent, print_stat, print_conso,print_regisltet,print_skill, print_active_skill, print_passive_skill, print_dps_skill
 from toram_utils.stat_calculations import Build
 from toram_utils.skills import SKILLS,SkillTypes
 persist_session_data()
 
-st.write(":red[UNDER DEVELOPMENT]")
+under_developement()
+
 
 tabs = ["🎛️ Resume ","🙋🏻‍♂️ Base Stat ","🪖 Equipment ","🌟 Skill ","🥗 Food Buff ","💎 Regislet ","🧪 Consommables "]
 

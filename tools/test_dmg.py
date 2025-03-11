@@ -1,9 +1,12 @@
 import streamlit as st
-
+from helpers.session import persist_session_data,under_developement
 from toram_utils.skills.dmg_calculation import *
 
-st.write("Test DMG :red[UNDER DEVELOPMENT]")
+persist_session_data()
 
+under_developement()
+
+st.write("Test DMG")
 #ATK , player_level, target_level, target_resistance
 #target_DEF , total_pierce
 

@@ -1,10 +1,10 @@
 import streamlit as st
-from helpers.session import persist_session_data,load_crytas
+from helpers.session import persist_session_data,under_developement,load_crytas
 from toram_utils import STATS,WEAPON_TYPE,BODY_ARMOR_TYPE, Weapon,REFINE_LABELS,STATS_ARMOR, BodyArmor,Additionnal,Ring, EQUIPMENT_TYPE, STAT_CONDITIONS,POSSIBLE_SUB,SubWeapon,PURE_SUB_WEAPON,REFINABLE_SUB
 from toram_utils.printer import print_ring, print_additionnal, print_body_armor, print_stat,print_weapon,print_subweapon
 persist_session_data()
 
-st.write(":red[UNDER DEVELOPMENT]")
+under_developement()
 
 @st.dialog("Create Equipment", width="large")
 def create_equipment(equipment_type):

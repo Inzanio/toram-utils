@@ -48,7 +48,7 @@ pages = {
     
     "Simulator":[build,inventory],
     "Tools" : [test_dmg,food_buff_finder,items_prices],
-    "Contribute": [addCrysta,addConso,addItem_price]
+    "Contribute": [addFood_buff,addCrysta,addConso,addItem_price]
 }
 # else :
 #     pages = {

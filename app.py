@@ -38,22 +38,25 @@ addItem_price = st.Page("contribute/add_item_price.py", title="Add Special Item 
 
 food_buff_finder = st.Page("tools/food_buff_finder.py",title="Find Food Buff", icon="🥗",default=True)
 items_prices = st.Page("tools/special_items_prices.py",title="Find Special Items Prices", icon="🌟")
+
+test_dmg = st.Page("tools/test_dmg.py",title="Test DMG", icon="💥")
+
 st.logo("./img/logo.png",size="large")
 
-if (st.session_state.ontest):
-    pages = {
+#if (st.session_state.ontest):
+pages = {
+    
+    "Simulator":[build,inventory],
+    "Tools" : [test_dmg,food_buff_finder,items_prices],
+    "Contribute": [addCrysta,addConso,addItem_price]
+}
+# else :
+#     pages = {
         
-        "Simulator":[build,inventory],
-        "Tools" : [food_buff_finder,items_prices],
-        "Contribute": [addCrysta,addConso,addItem_price]
-    }
-else :
-    pages = {
-        
-        #"Simulator":[build,inventory],
-        "Tools" : [food_buff_finder,items_prices],
-        "Contribute": [addFood_buff,addItem_price]
-    }
+#         #"Simulator":[build,inventory],
+#         "Tools" : [food_buff_finder,items_prices],
+#         "Contribute": [addFood_buff,addItem_price]
+#     }
 # setting up app navigation
 app = st.navigation(pages)
 app.run()

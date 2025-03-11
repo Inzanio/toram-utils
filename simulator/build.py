@@ -6,6 +6,8 @@ from toram_utils.stat_calculations import Build
 from toram_utils.skills import SKILLS,SkillTypes
 persist_session_data()
 
+st.write(":red[UNDER DEVELOPMENT]")
+
 tabs = ["🎛️ Resume ","🙋🏻‍♂️ Base Stat ","🪖 Equipment ","🌟 Skill ","🥗 Food Buff ","💎 Regislet ","🧪 Consommables "]
 
 resume_tab, base_stat_tab , equipment_tab , skill_tab, food_buff_tab, regislet_tab, conso_tab,  = st.tabs(tabs)

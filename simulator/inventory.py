@@ -4,6 +4,7 @@ from toram_utils import STATS,WEAPON_TYPE,BODY_ARMOR_TYPE, Weapon,REFINE_LABELS,
 from toram_utils.printer import print_ring, print_additionnal, print_body_armor, print_stat,print_weapon,print_subweapon
 persist_session_data()
 
+st.write(":red[UNDER DEVELOPMENT]")
 
 @st.dialog("Create Equipment", width="large")
 def create_equipment(equipment_type):

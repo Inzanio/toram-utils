@@ -3,54 +3,85 @@ from math import floor
 # dmg calculation in toram has many step
 
 
+def stability_interval ( stability , is_magic_stability = False) :
+    stability_corrected = min(stability,100)
+    min_stab = stability_corrected
+    max_stab = 100
+    if ( is_magic_stability) :
+        min_stab = int(min(90,(100+stability_corrected)/2))
+        max_stab = int(max(100,100+(stability_corrected-80)/2))
+    return min_stab,max_stab
 
-def base_dmg (build : Build):
-    # physical base dmg
-    base_physical_dmg = (build.totalATK + build.playerLevel + 1 - build.target.level ) * (100 - build.target.physical_resistance  )/100
-    # magic base dmg
-    base_magic_dmg = (build.totalMATK + build.playerLevel + 1 - build.target.level ) * (100 - build.target.magic_resistance  )/100
+def base_dmg ( ATK , player_level, target_level, target_resistance):
 
-    return { "physical" : base_physical_dmg , "magic" : base_magic_dmg }
 
-def effective_defense ( build : Build) :
-    effectiv_DEF = build.target.DEF *  (100 - build.totalPhysicalPierce)/100
-    effectiv_MDEF = build.target.MDEF *  (100 - build.totalMagicPierce)/100
+    return ( ATK + player_level + 1 - target_level ) * (100 - target_resistance )/100
+
+def effective_defense ( target_DEF , total_pierce) :
     
-    return { "physical" : effectiv_DEF , "magic" : effectiv_MDEF }
+    return target_DEF*  (100 - total_pierce)/100
 
-def raw_dmg (build  : Build, skill_constant = 0 , skill_multiplier = 100 , is_unsheathe = False , is_critical = True, total_dte = 100, physical_prorate = 250):
+def skill_base_dmg ( base_dmg, effective_defense , skill_constant = 0 , skill_multiplier = 100 , is_unsheathe = False, total_unsheathe_percent = 0, total_unsheathe_flat =0 , is_critical = True , total_critical_damage = 150, total_dte = 100, physical_prorate = 250, stability = 80, is_magic_stability = True):
     
-    physical_raw_dmg = floor(base_dmg(build)["physical"] - effective_defense(build)["physical"])
+    dmg = floor(base_dmg - effective_defense)
     # add skill constant
-    physical_raw_dmg = floor(physical_raw_dmg + skill_constant)
+    dmg = floor(dmg + skill_constant)
     # add unshathe flat
     if is_unsheathe :
-        physical_raw_dmg = floor(physical_raw_dmg + build.totalUnsheathe_attack_flat )
+        dmg = floor(dmg + total_unsheathe_flat )
     
     # -- start multiplier --
     
     # add crit dmg
     if (is_critical) :
-        physical_raw_dmg = floor(physical_raw_dmg * build.totalCriticalDamage/100 )
+        dmg = floor(dmg * total_critical_damage/100 )
     # add dte
-    physical_raw_dmg = floor(physical_raw_dmg * total_dte/100 )
+    dmg = floor(dmg * total_dte/100 )
     # add skill multiplier
-    physical_raw_dmg = floor(physical_raw_dmg * skill_multiplier/100 )
+    dmg = floor(dmg * skill_multiplier/100 )
    
     # add unshathe flat 
     if is_unsheathe :
-        physical_raw_dmg = floor(physical_raw_dmg * build.totalUnsheathe_attack_percent/100 )
+        dmg = floor(dmg * total_unsheathe_percent/100 )
     
     # i could stop here and return it at raw dmg
     ## add stability
-    physical_raw_dmg = floor(physical_raw_dmg * build.totalStability/100 )
-    ## add prorate
-    physical_raw_dmg = floor(physical_raw_dmg * physical_prorate/100 )
+    possible_dmg = {}
+    min_stability , max_stability = stability_interval(stability, is_magic_stability)
     
-    # at the end add suprême multiplier
-    return {
-        "physical" : physical_raw_dmg
-    }
+    for stab in range(min_stability,max_stability+1) :
+        possible_dmg[stab] = floor(dmg * stab/100)
+    
+    
+    ## add prorate to all possible dmg
+    possible_dmg = {stab: floor(dmg * physical_prorate/100 ) for stab, dmg in possible_dmg.items()}
 
+    #
+    # 
+    # at the end add suprême multiplier
+    # 1 + sum of all skill modifier if skill affected ( passive like sword techinuqes long range whack martial disciilie)
+    # 1 + total srd / lrd
+    # *0.7 if ahs lethargy
+    #  1 + summ of all last dmg modifier ( if affected by brave aura or being caster of mana recharge)
+    # 1 + summ of all combo modifier ( if skill is in a combo)
+    # *(1-base drop gem dmg red / 100) if (use gem)
+    # * 0.25 if attack was guarded
+    # * (1+ utlima lion rage dmg bonys/100) if skill only 
 # def add_multiplier (build : Build , raw_dmg : int):
-    
+
+class Hit :
+    def  __init__(self):
+        self.count = 1
+        self.constant = 0
+        self.multi = 0
+        self.extra_stats = {}
+        self.base_dmg = 0
+        
+    # hit = {
+    #     "count": 1,
+    #     "constant" : 0,
+    #     "multi" : 0,
+    #     "base_dmg":0,
+    #     "is_magic": False,
+    #     "extra_stats":{}
+    # }

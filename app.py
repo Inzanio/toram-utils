@@ -34,12 +34,14 @@ addCrysta = st.Page("contribute/crystas.py", title="Add Crysta", icon="💎")
 addConso = st.Page("contribute/consommables.py", title="Add Consommable", icon="🧪")
 addFood_buff =st.Page("contribute/food_buff.py", title="Add Food Buff", icon="🥗")
 
-addItem_price = st.Page("contribute/add_item_price.py", title="Add Special Item Price", icon="🌟")
+#addItem_price = st.Page("contribute/add_item_price.py", title="Add Special Item Price", icon="🌟")
 
 food_buff_finder = st.Page("tools/food_buff_finder.py",title="Find Food Buff", icon="🥗",default=True)
-items_prices = st.Page("tools/special_items_prices.py",title="Find Special Items Prices", icon="🌟")
+#items_prices = st.Page("tools/special_items_prices.py",title="Find Special Items Prices", icon="🌟")
 
 test_dmg = st.Page("tools/test_dmg.py",title="Test DMG", icon="💥")
+
+pricing = st.Page("pricing/lvling_prices.py", title="Prices for Leveling",icon="💸")
 
 st.logo("./img/logo.png",size="large")
 
@@ -47,8 +49,9 @@ st.logo("./img/logo.png",size="large")
 pages = {
     
     "Simulator":[build,inventory],
-    "Tools" : [test_dmg,food_buff_finder,items_prices],
-    "Contribute": [addFood_buff,addCrysta,addConso,addItem_price]
+    "Tools" : [test_dmg,food_buff_finder],
+    "Contribute": [addFood_buff,addCrysta,addConso],
+    "Services Pricing" : [pricing]
 }
 # else :
 #     pages = {

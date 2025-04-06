@@ -19,7 +19,7 @@ start_level = start_level +1
 end_level = col_end_lvl.number_input("Enter the level you want to reach", min_value=start_level+1, max_value=level_cap , value=level_cap )
 
 cote = st.number_input(f"Play with :blue[my cote] and see how Price goes (may help for negociation)", min_value=1 , value=286 )
-nb_level = end_level - start_level
+nb_level = end_level - start_level+1
 
 st.write(f"So you wanna do :blue[{nb_level}] levels ?")
 

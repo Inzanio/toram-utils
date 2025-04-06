@@ -13,6 +13,9 @@ col1.metric("🔝 Level", f"{300}",help=f"Current :blue[level max] in Toram")
 
 col_start_lvl , col_end_lvl = st.columns(2)
 start_level = col_start_lvl.number_input("Enter the level you will :green[start] with", min_value=1, max_value=level_cap-1)
+
+start_level = start_level +1
+
 end_level = col_end_lvl.number_input("Enter the level you want to reach", min_value=start_level+1, max_value=level_cap , value=level_cap )
 
 cote = st.number_input(f"Play with :blue[my cote] and see how Price goes (may help for negociation)", min_value=1 , value=286 )

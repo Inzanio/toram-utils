@@ -50,6 +50,6 @@ st.write(f"And it will cost 💲:green[{df["💲Prices (Spina)"].sum():,}]")
 col2.metric("My cote", f"⚖️{cote}",label_visibility="visible", help=f"A unit to calculate :green[price] base on :blue[exp] needed, More it :red[increase] more the :green[price] is :red[high].\nIt will :red[increase] with game :red[inflation]")
 col3.metric("Total Coast",f"💲{df["💲Prices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
 
-st.write("💡If you ok with or wanna negociate further, just DM me in Discord 🤝")
 st.write("⚠️ Note that all of this is when you have :blue[exp book] on, i'm still figuring out how to do princing when no book on.")
-st.write("If you have suggestion feel free to DM me on Discord !")
+st.write("💡If you ok with this or wanna negociate further, or give some suggestion, just DM me in Discord 🤝")
+

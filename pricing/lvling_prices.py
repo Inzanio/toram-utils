@@ -41,17 +41,17 @@ df = pd.DataFrame({
 })
 df["🌟Exp Required"] = df["Level"].apply(exp_require_for_next_lvl)
 
-df["SPrices (Spina)"] = df["🌟Exp Required"].apply(pricing)
+df["S Prices (Spina)"] = df["🌟Exp Required"].apply(pricing)
 
 # if (nb_level > 150) :
 #     st.line_chart(df, x="Level", y="🌟Exp Required" )
 st.dataframe(df,hide_index=True,use_container_width=True)
 
 st.write(f"So in Sum you need 🌟:blue[{df["🌟Exp Required"].sum():,}] EXP")
-st.write(f"And it will cost S:green[{df["SPrices (Spina)"].sum():,}]")
+st.write(f"And it will cost S :green[{df["S Prices (Spina)"].sum():,}]")
 
 col2.metric("My cote", f"⚖️ {cote}",label_visibility="visible", help=f"A unit to calculate :green[price] base on :blue[exp] needed, More it :red[increase] more the :green[price] is :red[high].\nIt will :red[increase] with game :red[inflation]")
-col3.metric("Total Coast",f"S{df["SPrices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
+col3.metric("Total Coast",f"S {df["S Prices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
 
 st.write("⚠️ Note that all of this is when you have :blue[exp book] on, i'm still figuring out how to do princing when no book on.")
 st.write("💡If you ok with this or wanna negociate further, or give some suggestion, just DM me in Discord 🤝")

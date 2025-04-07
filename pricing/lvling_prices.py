@@ -32,8 +32,7 @@ def exp_require_for_next_lvl(current_lvl):
 
 def pricing(level,has_book = False):
     price_from_exp = exp_require_for_next_lvl(level)/1000
-    if not has_book :
-        price_from_exp = price_from_exp * 2
+    price_from_exp = price_from_exp * 3
     return price_ceil(level * 1000 + price_from_exp )
 
 

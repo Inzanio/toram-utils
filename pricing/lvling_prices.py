@@ -6,9 +6,8 @@ st.title("🔰Leveling Services Princing💰")
 
 # need level range
 level_cap = 300
-cote=286
-pricing_unit = 100000
-col1,col2,col3 = st.columns(3)
+
+col1,col2 = st.columns(2)
 col1.metric("🔝 Level", f"{300}",help=f"Current :blue[level max] in Toram")
 
 col_start_lvl , col_end_lvl = st.columns(2)
@@ -31,8 +30,12 @@ def exp_require_for_next_lvl(current_lvl):
     return floor((current_lvl ** 4)* 0.025 + current_lvl*2)
 
 
-def pricing(exp_req,cote=cote, pricing_unit = 100000):
-    return price_ceil(floor(exp_req *( cote/pricing_unit )))
+def pricing(level,has_book = True):
+    price_from_exp = exp_require_for_next_lvl(level)/1000
+    if not has_book :
+        price_from_exp = price_from_exp * 2
+    return price_ceil(level * 1000 + price_from_exp )
+
 
 import pandas as pd
 
@@ -41,7 +44,7 @@ df = pd.DataFrame({
 })
 df["🌟Exp Required"] = df["Level"].apply(exp_require_for_next_lvl)
 
-df["💲Prices (Spina)"] = df["🌟Exp Required"].apply(pricing)
+df["💲Prices (Spina)"] = df["Level"].apply(pricing)
 
 # if (nb_level > 150) :
 #     st.line_chart(df, x="Level", y="🌟Exp Required" )
@@ -50,8 +53,8 @@ st.dataframe(df,hide_index=True,use_container_width=True)
 st.write(f"So in Sum you need 🌟:blue[{df["🌟Exp Required"].sum():,}] EXP")
 st.write(f"And it will cost 💲:green[{df["💲Prices (Spina)"].sum():,}]")
 
-col2.metric("My cote", f"⚖️ {cote}",label_visibility="visible", help=f"A unit to calculate :green[price] base on :blue[exp] needed, More it :red[increase] more the :green[price] is :red[high].\nIt will :red[increase] with game :red[inflation]")
-col3.metric("Total Coast",f"💲{df["💲Prices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
+
+col2.metric("Total Cost",f"💲{df["💲Prices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
 
 st.write("⚠️ Note that all of this is when you have :blue[exp book] on, i'm still figuring out how to do princing when no book on.")
 st.write("💡If you ok with this or wanna negociate further, or give some suggestion, just DM me in Discord 🤝")

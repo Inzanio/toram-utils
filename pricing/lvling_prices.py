@@ -8,7 +8,7 @@ st.title("🔰Leveling Services Princing💰")
 level_cap = 300
 
 col1,col2 = st.columns(2)
-col1.metric("🔝 Level", f"{300}",help=f"Current :blue[level max] in Toram")
+
 
 col_start_lvl , col_end_lvl = st.columns(2)
 start_level = col_start_lvl.number_input("Enter the level you will :green[start] with", min_value=1, max_value=level_cap-1)
@@ -30,7 +30,7 @@ def exp_require_for_next_lvl(current_lvl):
     return floor((current_lvl ** 4)* 0.025 + current_lvl*2)
 
 
-def pricing(level,has_book = True):
+def pricing(level,has_book = False):
     price_from_exp = exp_require_for_next_lvl(level)/1000
     if not has_book :
         price_from_exp = price_from_exp * 2
@@ -53,7 +53,7 @@ st.dataframe(df,hide_index=True,use_container_width=True)
 st.write(f"So in Sum you need 🌟:blue[{df["🌟Exp Required"].sum():,}] EXP")
 st.write(f"And it will cost 💲:green[{df["💲Prices (Spina)"].sum():,}]")
 
-
+col1.metric("🆙Level to do", f"{nb_level}")
 col2.metric("Total Cost",f"💲{df["💲Prices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
 
 st.write("⚠️ Note that all of this is when you have :blue[exp book] on, i'm still figuring out how to do princing when no book on.")

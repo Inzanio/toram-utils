@@ -31,7 +31,7 @@ def exp_require_for_next_lvl(current_lvl):
 
 def pricing(level):
     price_from_exp = exp_require_for_next_lvl(level)/1000
-    price_from_exp = price_from_exp * 20
+    price_from_exp = price_from_exp * 25
     return price_ceil(level * 2000 + price_from_exp )
 
 

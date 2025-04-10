@@ -32,7 +32,7 @@ def exp_require_for_next_lvl(current_lvl):
 def pricing(level):
     price_from_exp = exp_require_for_next_lvl(level)/1000
     price_from_exp = price_from_exp * 9
-    return price_ceil(level * 3000 + price_from_exp )
+    return price_ceil(level * 1800 + price_from_exp )
 
 
 import pandas as pd

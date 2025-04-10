@@ -22,7 +22,7 @@ nb_level = end_level - start_level+1
 st.write(f"So you wanna do :blue[{nb_level}] levels ?")
 
 
-def price_ceil(price,unit=1000):
+def price_ceil(price,unit=10000):
     return ceil(price / unit) * unit
 
 def exp_require_for_next_lvl(current_lvl):

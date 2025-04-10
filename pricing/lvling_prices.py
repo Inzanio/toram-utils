@@ -31,8 +31,8 @@ def exp_require_for_next_lvl(current_lvl):
 
 def pricing(level):
     price_from_exp = exp_require_for_next_lvl(level)/1000
-    price_from_exp = price_from_exp * 4
-    return price_ceil(level * 1000 + price_from_exp )
+    price_from_exp = price_from_exp * 12
+    return price_ceil(level * 2000 + price_from_exp )
 
 
 import pandas as pd
@@ -54,6 +54,6 @@ st.write(f"And it will cost 💲:green[{df["💲Prices (Spina)"].sum():,}]")
 col1.metric("🆙Level to do", f"{nb_level}")
 col2.metric("Total Cost",f"💲{df["💲Prices (Spina)"].sum():,}",label_visibility="visible",help=f"The total amount of :green[money] to level up from :blue[level {start_level}] to :blue[level {end_level}]")
 
-st.write("⚠️ Note that all of this is when you have :blue[exp book] on, i'm still figuring out how to do princing when no book on.")
+st.write("⚠️ Note that all of this is when you don't have :blue[exp book]. So, if you use :blue[exp book] can do discount let just discuss about ! ")
 st.write("💡If you ok with this or wanna negociate further, or give some suggestion, just DM me in Discord 🤝")
 

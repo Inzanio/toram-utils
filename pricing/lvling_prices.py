@@ -22,8 +22,8 @@ with tab_by_hour :
     col1.metric("⏰1 Hour ",f"💲{hour_cost:,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by hour")
 
 with tab_by_kill :
-    st.write("It depend on boss type")
-    BOSS_TYPE = ["MINI BOSS","NORMAL BOSS","HIGH DIFFICULTY NOSS"]
+
+    BOSS_TYPE = ["MINI BOSS","NORMAL BOSS","HIGH DIFFICULTY BOSS"]
     boss_type = st.pills("Boss type",options=BOSS_TYPE,default=BOSS_TYPE[0])
     boss_level = st.number_input("Boss level",min_value=1, max_value=400)
     boss_type_pricing = {
@@ -85,3 +85,8 @@ with tab_by_level :
     st.write("⚠️ Note that all of this is when you don't have :blue[exp book]. So, if you use :blue[exp book] can do discount let just discuss about ! ")
     st.write("💡If you ok with this or wanna negociate further, or give some suggestion, just DM me in Discord 🤝")
 
+
+with st.expander("List of Bosses to do for leveling :") :
+    df_leveling = pd.read_csv("boss_fast_lvilng.csv")
+    df_leveling.drop(columns=["Level"],inplace=True)
+    st.dataframe(df_leveling,hide_index=True)

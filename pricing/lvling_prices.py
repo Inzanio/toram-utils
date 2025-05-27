@@ -16,7 +16,7 @@ def price_ceil(price,unit=10000):
 #  ( [BOSS level] * 600 /kill or [MINI BOSS level]*350 / kill)**   
 #     *for example Castilia is boss lvl 310 so it will cost 310\*600/kill = 186k/kill and meteora is a mini boss level 302 so it will cost 302\*350/kill = 106k/kill* 
 with tab_by_hour :
-    hour_cost = 6000000
+    hour_cost = 7000000
     col1,col2 = st.columns(2)
     col2.metric("⏰1 Min ",f"💲{price_ceil(hour_cost/60):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by minutes")
     col1.metric("⏰1 Hour ",f"💲{hour_cost:,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by hour")
@@ -31,7 +31,7 @@ with tab_by_kill :
         BOSS_TYPE[1] : 1000,
         BOSS_TYPE[2] : 2500
     }
-    total_cost = (10000 + boss_type_pricing[boss_type]*boss_level  + (300000 if boss_type == BOSS_TYPE[2] else 0))//1.3 # 1.3 is the discount for bulk buying
+    total_cost = (10000 + boss_type_pricing[boss_type]*boss_level  + (300000 if boss_type == BOSS_TYPE[2] else 0))//1.2 # 1.2 is the discount for bulk buying
     col1,col2 = st.columns(2)
     #col2.metric("⏰1 Min ",f"💲{price_ceil(hour_cost/60):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by minutes")
     col1.metric("Cost Per kill🗡️",f"💲{price_ceil(total_cost):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by kill")
@@ -60,7 +60,7 @@ with tab_by_level :
     def pricing(level):
         price_from_exp = exp_require_for_next_lvl(level)/1000
         price_from_exp = price_from_exp * 25
-        return price_ceil((level * 2000 + price_from_exp )//2.5)
+        return price_ceil((level * 2000 + price_from_exp )//1.5)
 
 
     import pandas as pd

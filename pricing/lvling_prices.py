@@ -16,7 +16,7 @@ def price_ceil(price,unit=10000):
 #  ( [BOSS level] * 600 /kill or [MINI BOSS level]*350 / kill)**   
 #     *for example Castilia is boss lvl 310 so it will cost 310\*600/kill = 186k/kill and meteora is a mini boss level 302 so it will cost 302\*350/kill = 106k/kill* 
 with tab_by_hour :
-    hour_cost = 600000
+    hour_cost = 6000000
     col1,col2 = st.columns(2)
     col2.metric("⏰1 Min ",f"💲{price_ceil(hour_cost/60):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by minutes")
     col1.metric("⏰1 Hour ",f"💲{hour_cost:,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by hour")

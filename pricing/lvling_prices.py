@@ -2,8 +2,9 @@ import streamlit as st
 from math import floor,ceil
 
 discount = {
-    "by_kill" : 1.1,
-    "by_level" : 1.2
+    "by_kill" : 1,
+    "by_level" : 1,
+    "hour_cost" : 8 # millions
 }
 
 st.title("🔰Leveling Services Princing💰")
@@ -15,12 +16,12 @@ tab_by_hour , tab_by_kill, tab_by_level = st.tabs(PRICING_METHOD)
 # need level range
 level_cap = 300
     
-def price_ceil(price,unit=10000):
+def price_ceil(price,unit=100000):
     return ceil(price / unit) * unit
 #  ( [BOSS level] * 600 /kill or [MINI BOSS level]*350 / kill)**   
 #     *for example Castilia is boss lvl 310 so it will cost 310\*600/kill = 186k/kill and meteora is a mini boss level 302 so it will cost 302\*350/kill = 106k/kill* 
 with tab_by_hour :
-    hour_cost = 7000000
+    hour_cost = discount["hour_cost"] * 1000000
     col1,col2 = st.columns(2)
     col2.metric("⏰1 Min ",f"💲{price_ceil(hour_cost/60):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by minutes")
     col1.metric("⏰1 Hour ",f"💲{hour_cost:,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by hour")
@@ -31,9 +32,9 @@ with tab_by_kill :
     boss_type = st.pills("Boss type",options=BOSS_TYPE,default=BOSS_TYPE[0])
     boss_level = st.number_input("Boss level",min_value=1, max_value=400)
     boss_type_pricing = {
-        BOSS_TYPE[0] : 600,
-        BOSS_TYPE[1] : 1000,
-        BOSS_TYPE[2] : 2500
+        BOSS_TYPE[0] : 750,
+        BOSS_TYPE[1] : 1600,
+        BOSS_TYPE[2] : 3100
     }
     total_cost = (10000 + boss_type_pricing[boss_type]*boss_level  + (300000 if boss_type == BOSS_TYPE[2] else 0))//discount["by_kill"] # 1.1 is the discount for bulk buying
     col1,col2 = st.columns(2)

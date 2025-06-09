@@ -23,7 +23,7 @@ def price_ceil(price,unit=100000):
 with tab_by_hour :
     hour_cost = discount["hour_cost"] * 1000000
     col1,col2 = st.columns(2)
-    col2.metric("⏰1 Min ",f"💲{price_ceil(hour_cost/60):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by minutes")
+    col2.metric("⏰1 Min ",f"💲{price_ceil(hour_cost/60, unit=10000):,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by minutes")
     col1.metric("⏰1 Hour ",f"💲{hour_cost:,}",label_visibility="visible",help=f"The total amount of :green[money] i charge by hour")
 
 with tab_by_kill :

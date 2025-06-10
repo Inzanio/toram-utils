@@ -4,7 +4,7 @@ from math import floor,ceil
 discount = {
     "by_kill" : 1,
     "by_level" : 1,
-    "hour_cost" : 13 # millions
+    "hour_cost" : 15 # millions
 }
 
 st.title("🔰Leveling Services Princing💰")

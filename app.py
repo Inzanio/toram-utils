@@ -48,9 +48,8 @@ st.logo("./img/logo.png",size="large")
 #if (st.session_state.ontest):
 pages = {
     
-    "Simulator":[build,inventory],
-    "Tools" : [test_dmg,food_buff_finder],
-    "Contribute": [addFood_buff,addCrysta,addConso],
+
+    "Tools" : [food_buff_finder],
     "Services Pricing" : [pricing]
 }
 # else :

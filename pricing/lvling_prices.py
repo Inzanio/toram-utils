@@ -61,11 +61,11 @@ with tab_by_level :
     def exp_require_for_next_lvl(current_lvl):
         return floor((current_lvl ** 4)* 0.025 + current_lvl*2)
 
-
+    currentRaise = .1
     def pricing(level):
-        price_from_exp = exp_require_for_next_lvl(level)/800
-        price_from_exp = price_from_exp * 30
-        return price_ceil((level * 2100 + price_from_exp )//discount["by_level"])
+        price_from_exp = exp_require_for_next_lvl(level)/(1000*(1-currentRaise))
+        price_from_exp = price_from_exp * (25*(1+currentRaise))
+        return price_ceil((level * (2000*(1+currentRaise)) + price_from_exp )//discount["by_level"])
 
 
     import pandas as pd

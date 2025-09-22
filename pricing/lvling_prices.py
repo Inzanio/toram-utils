@@ -14,7 +14,7 @@ PRICING_METHOD = ["By Hour","By Kill","By Level"]
 st.write("Choose the way you wanna be charged !")
 tab_by_hour , tab_by_kill, tab_by_level = st.tabs(PRICING_METHOD)
 # need level range
-level_cap = 300
+level_cap = 305
     
 def price_ceil(price,unit=100000):
     return ceil(price / unit) * unit

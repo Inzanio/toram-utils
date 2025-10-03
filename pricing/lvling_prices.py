@@ -1,14 +1,17 @@
 import streamlit as st
 from math import floor,ceil
 
+promotion = 0
+
 discount = {
-    "by_kill" : 1,
-    "by_level" : 1,
-    "hour_cost" : 16 # millions
+    "by_kill" : 1+promotion, # diviseur l'augmenter pour diminuer les pris +1 = -50% 
+    "by_level" : 1+promotion,
+    "hour_cost" : 16*(1-promotion) # millions
 }
 
 st.title("🔰Leveling Services Princing💰")
-
+if (promotion > 0):
+    st.subheader(f"🌟 Promotion !! -{int(promotion*100)}% prices 💲 !!")
 PRICING_METHOD = ["By Hour","By Kill","By Level"]
 
 st.write("Choose the way you wanna be charged !")
@@ -20,6 +23,8 @@ def price_ceil(price,unit=100000):
     return ceil(price / unit) * unit
 #  ( [BOSS level] * 600 /kill or [MINI BOSS level]*350 / kill)**   
 #     *for example Castilia is boss lvl 310 so it will cost 310\*600/kill = 186k/kill and meteora is a mini boss level 302 so it will cost 302\*350/kill = 106k/kill* 
+
+
 with tab_by_hour :
     hour_cost = discount["hour_cost"] * 1000000
     col1,col2 = st.columns(2)

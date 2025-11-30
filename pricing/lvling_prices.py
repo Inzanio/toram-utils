@@ -4,9 +4,9 @@ from math import floor,ceil
 promotion = 0
 
 discount = {
-    "by_kill" : 1+promotion, # diviseur l'augmenter pour diminuer les pris +1 = -50% 
-    "by_level" : 1+promotion,
-    "hour_cost" : 16*(1-promotion) # millions
+    "by_kill" : 4+promotion, # diviseur l'augmenter pour diminuer les pris +1 = -50% 
+    "by_level" : 4+promotion,
+    "hour_cost" : 9*(1-promotion) # millions
 }
 
 st.title("🔰Leveling Services Princing💰")

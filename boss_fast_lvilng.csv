@@ -6,11 +6,11 @@ Masked Warrior [ULTI],Fire,Land Under Cultivation: Hill,107,99,116,13
 Lapin the Necromencer,Neutral,Trace of Dark River,124,116,133,0
 Cerberus [ULTI],Water,Spring of Rebirth: Top,137,129,146,4
 Commander Golem,Dark,Lufenas Mansion: Entrance,154,146,163,0
-Volotur,Dark,Suburb of Droma Square: Area 3,160,152,169,11
+Amoeba Machina,Water,Suburb of Droma Square: Area 3,158,150,167,13
 Altobeplas,Neutral,Rokoko Plains,174,166,183,3
 Goldenia,Earth,Elf Mountains: Area 3,187,179,196,4
 Frenzy Viola,Earth,Morthell Swell: Area 3,198,190,207,6
-Demonic Eye,Neutral,Dea Ruinea,212,204,221,3
+Tardigrademon,Fire,Old Lufenas Mansion Ruins,210,202,219,5
 Espectro,Dark,Arche Valley: Area 1,221,213,230,8
 Rhinosaur,Earth,Fugitive Lake Swamp: Area 3,232,224,241,6
 Bullamius,Earth,Storage Yard: Area 2,239,231,248,10
@@ -19,4 +19,5 @@ Galegon,Wind,Boma Moja: Area 3,260,252,269,8
 Trus,Fire,Propulsion System Zone: Power Tank,269,261,278,8
 Lilicarolla,Dark,Frozen Falls : Area 1,278,270,287,8
 Capo Profondo,Water,Abandoned District: Area 3,287,279,296,8
-DoriDodi,Dark,Little Shrine of Grace: Area 2,296,288,305,8
+DoriDodi,Dark,Marinatown,296,288,305,8
+Wiltileaf,Dark,Eumano Village Ruins: Area 2,305,297,314,8
